@@ -64,7 +64,7 @@ You work as a data analyst for a small hardware retailer. The company has data a
 - Navigate to your repo and [create a Pull Request](https://help.github.com/articles/creating-a-pull-request/).
 - Create a pull request with title following this format: **"[<your_campus>][<bootcamp_code>] <your_name>"**
   If you are doing data bootcamp in Madrid and your name is Marc it should be like this: "[MAD][datamad10108] Marc Pomar"
-- If you have successfully created the pull request you are done!  CONGRATS :)
+- If you have successfully created the pull request you are done!  **CONGRATS :)**
 
 ## Useful Resources
 
