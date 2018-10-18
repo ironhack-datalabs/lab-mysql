@@ -51,6 +51,21 @@ You are a data analyst working for a credit card company. The company has data a
 
 You work as a data analyst for a small hardware retailer. The company has data about products, customers, sales, and employees. They have less than 25 employees, so they would like to figure out where they should focus their sales and marketing efforts given their limited resources.
 
+## Submission
+
+- Upon completion, commit your code and submit to github. **REMEMBER TO FORK THE REPO BEFORE**!!
+
+  ```
+  git add .
+  git commit -m "done"
+  git push origin master
+  ```
+
+- Navigate to your repo and [create a Pull Request](https://help.github.com/articles/creating-a-pull-request/).
+- Create a pull request with title following this format: **"[<your_campus>][<bootcamp_code>] <your_name>"**
+  If you are doing data bootcamp in Madrid and your name is Marc it should be like this: "[MAD][datamad10108] Marc Pomar"
+- If you have successfully created the pull request you are done!  CONGRATS :)
+
 ## Useful Resources
 
 * [MySQL Documentation](https://dev.mysql.com/doc/)
