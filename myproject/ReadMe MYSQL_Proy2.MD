@@ -72,7 +72,7 @@ FROM country
 LEFT JOIN countrylanguage
 ON country.Code = countrylanguage.CountryCode
 
-7.4)97 -- Cuales son los 5 paises en que mayores lenguajes se hablan?, que cantidad de lenguajes son? -- \
+7.4) -- Cuales son los 5 paises en que mayores lenguajes se hablan?, que cantidad de lenguajes son? -- \
 
  SELECT language, count(language)
  FROM country
