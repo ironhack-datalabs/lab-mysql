@@ -160,6 +160,15 @@ SELECT title AS Titulo, text AS Texto FROM mydb.Reviews WHERE stars = 2;
 
 -- productos cuyo departamento (sección) empiece por  la cadena 'thin'
 SELECT * FROM mydb.Products WHERE mydb.Products.department LIKE 'thin%';
+
+-- Cálculo compuesto de una combinación de variables
+SELECT 
+mydb.Products.id, 
+mydb.Products.name, 
+mydb.Products.price AS p, 
+mydb.Products.cuantity_available_for_sale AS n, 
+mydb.Products.price/mydb.Products.cuantity_available_for_sale AS average
+FROM mydb.Products;
 ```
 
 #### JOINS
