@@ -147,11 +147,10 @@ Esto nos sirve como ejemplo para cualquier tabla.
 
 ### Creando querys
 Las querys que he ejecutado son las siguientes: 
-```
---
--- SELECTS
---
 
+#### SELECTS
+
+```
 -- Reviews del usuario 1
 SELECT * FROM mydb.Reviews WHERE Users_id = 1;
 
@@ -160,10 +159,10 @@ SELECT title AS Titulo, text AS Texto FROM mydb.Reviews WHERE stars = 2;
 
 -- productos cuyo departamento (sección) empiece por  la cadena 'thin'
 SELECT * FROM mydb.Products WHERE mydb.Products.department LIKE 'thin%';
+```
 
-
--- JOINS
-
+#### JOINS
+```
 -- Reviews escritas por los usuarios llamados alberto
 SELECT * FROM mydb.Reviews LEFT JOIN mydb.Users ON mydb.Reviews.Users_id = Users.id WHERE Users.name = 'alberto';
 
@@ -174,10 +173,10 @@ SELECT * FROM mydb.Reviews LEFT JOIN mydb.Users ON mydb.Reviews.Users_id = Users
 SELECT mydb.Users.name AS 'nombre de usuario', mydb.Reviews.stars AS 'estrellas'
 FROM mydb.Reviews INNER JOIN mydb.Users ON mydb.Users.id = mydb.Reviews.Users_id 
 WHERE mydb.Users.name LIKE 'alberto%' AND mydb.Reviews.stars > 1;
+```
 
---
--- TABLA TEMPORAL
---
+#### TABLA TEMPORAL
+```
 -- temporal: usuarios cuyo email contenga la cadena 'gmai'
 CREATE TEMPORARY TABLE mydb.usuarios_gmai 
 SELECT * FROM mydb.Users WHERE email LIKE '%@gmai%';
