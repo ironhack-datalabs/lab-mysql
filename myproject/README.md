@@ -87,5 +87,3 @@ FROM (
     GROUP BY customers.Segment
 ) summary;
 ```
-
-### Query 3
