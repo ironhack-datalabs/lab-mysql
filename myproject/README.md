@@ -66,13 +66,26 @@ ON transactions_1k.GasStationID = gasstations.GasStationID;
 
 ## Queries
 ### Query 1
-I executed this query to understand which Chains were the most popular among the customers. To do so, I grouped the number of transactions by each chain. From the results, I can conlude that chain 4, 2, 1, and 33 are the most popular. Since the 4 most popular have small number ChainIDs, there is a chance that his analysis is biased by how long the chain has been on the network. 
+I executed this query to understand which Chains were the most popular among the customers. To do so, I grouped the number of transactions by each chain. From the results, I can conlude that chain 4, 2, 1, and 33 are the most popular. Since the 4 most popular have small number ChainIDs, there is a chance that his analysis is biased by how long the chain has been on the network. In addition, I created a temporary table to further analyze the results.
 ```
+CREATE TEMPORARY TABLE CCS.transactions_by_chain
 SELECT gasstations.ChainID, COUNT(transactions_1k.TransactionID) AS "Transactions by Chain" 
 FROM gasstations
 INNER JOIN transactions_1k
 ON transactions_1k.GasStationID = gasstations.GasStationID
-GROUP BY gasstations.ChainID;
+GROUP BY gasstations.ChainID; 
 ```
 
 ### Query 2 
+I executed this query in order to better understand the differences in consumption patters between the different customer segments. From the results, I can see that the KAM segment average transaction is of 20.5, the LAM segment average transaction is of 19.92 and the SME segment average transaction is of 18.
+```
+SELECT Segment, Amounts/Transactions AS AvgTransaction
+FROM (
+    SELECT customers.Segment AS Segment, COUNT(transactions_1k.TransactionID) AS Transactions, SUM(transactions_1k.Amount) AS Amounts
+    FROM customers
+    INNER JOIN transactions_1k ON customers.CustomerID = transactions_1k.CustomerID
+    GROUP BY customers.Segment
+) summary;
+```
+
+### Query 3
