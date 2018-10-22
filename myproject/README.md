@@ -42,7 +42,7 @@ I generated the ERD using the following:
 ```
 Database > Reverse Engineering 
 ```
-![ERD](ERC_ccs.png)
+![ERD](lab-mysql/myproject/ERD_ccs.png)
 
 
 ## Joins
