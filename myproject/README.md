@@ -42,7 +42,7 @@ I generated the ERD using the following:
 ```
 Database > Reverse Engineering 
 ```
-![ERD](lab-,ysql/myproject/ERC_ccs.png)
+![ERD](ERC_ccs.png)
 
 
 ## Joins
@@ -66,7 +66,7 @@ ON transactions_1k.GasStationID = gasstations.GasStationID;
 
 ## Queries
 ### Query 1
-I executed this query to understand which Chains were the most popular among the customers. To do so, I grouped the number of transactions by each chain. From the results, I can conlude that chain 4, 2, 1, and 33 are the most popular. Since the 4 most popular have small number ChainIDs, there is a chance that his analysis is biased by how long the chain has been on the network. In addition, I created a temporary table to further analyze the results.
+I executed this query to understand which Chains were the most popular among the customers. To do so, I grouped the number of transactions by each chain. From the results, I can conlude that chain 4, 2, 1, and 33 are the most popular. I created a temporary table to further analyze the results.
 ```
 CREATE TEMPORARY TABLE CCS.transactions_by_chain
 SELECT gasstations.ChainID, COUNT(transactions_1k.TransactionID) AS "Transactions by Chain" 
@@ -77,7 +77,7 @@ GROUP BY gasstations.ChainID;
 ```
 
 ### Query 2 
-I executed this query in order to better understand the differences in consumption patters between the different customer segments. From the results, I can see that the KAM segment average transaction is of 20.5, the LAM segment average transaction is of 19.92 and the SME segment average transaction is of 18.
+I executed this query in order to better understand the differences in consumption patters between the different customer segments. From the results, I can see that the KAM segment average consumption is of 20.5, the LAM segment average consumption is of 19.92 and the SME segment average consumption is of 18. I used the Amounts data point since it is not affected by price.
 ```
 SELECT Segment, Amounts/Transactions AS AvgTransaction
 FROM (
@@ -86,4 +86,13 @@ FROM (
     INNER JOIN transactions_1k ON customers.CustomerID = transactions_1k.CustomerID
     GROUP BY customers.Segment
 ) summary;
+```
+
+
+## Query 3
+I deleted this datapoint since it there was only one customer with a negative consumption value. 
+
+```
+DELETE FROM CCS.yearmonth
+WHERE Consumption < 0;
 ```

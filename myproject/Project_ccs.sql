@@ -26,3 +26,7 @@ FROM (
     INNER JOIN transactions_1k ON customers.CustomerID = transactions_1k.CustomerID
     GROUP BY customers.Segment
 ) summary;
+
+-- Query 3
+DELETE FROM CCS.yearmonth
+WHERE Consumption < 0;
